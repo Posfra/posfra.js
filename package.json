@@ -1,0 +1,50 @@
+{
+  "name": "posfra",
+  "version": "1.0.0",
+  "description": "A lightweight JavaScript library for embedding Posfra Bitcoin payment buttons into your website",
+  "main": "dist/embed.js",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "dev": "nodemon -w src/Posfra.ts --exec \"node build.js\"",
+    "prepublishOnly": "npm run build",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest watch"
+  },
+  "keywords": [
+    "bitcoin",
+    "payment",
+    "crypto",
+    "btc",
+    "payment-button",
+    "bitcoin-payment",
+    "embed",
+    "posfra"
+  ],
+  "author": "Anthony Budd",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/posfra/posfra.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/posfra/posfra.js/issues"
+  },
+  "homepage": "https://github.com/posfra/posfra.js#readme",
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.5",
+    "@vitest/coverage-v8": "^1.0.4",
+    "dotenv": "^16.5.0",
+    "esbuild": "^0.25.3",
+    "jsdom": "^23.0.1",
+    "nodemon": "^3.1.10",
+    "vitest": "^1.0.4"
+  },
+  "dependencies": {}
+}
