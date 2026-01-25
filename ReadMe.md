@@ -1,5 +1,5 @@
 
-![Posfra.js Payment Widget](./assets/github-cover-image.jpg)
+![Posfra.js Payment Widget](./assets/github-cover-image.jpg?v=1.0.1)
 
 
 # Posfra.js
@@ -78,8 +78,6 @@ element.addEventListener('onPaymentAccepted', (event) => {
     });
 });
 ```
-
-
 
 ## License
 MIT &copy; 2026 Posfra.com
