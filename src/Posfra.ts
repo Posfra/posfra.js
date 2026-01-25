@@ -2,7 +2,6 @@
 
 import Button, { type ButtonOptions } from './Button';
 
-// Extend Window interface for global Posfra access
 declare global {
     interface Window {
         Posfra: typeof Posfra;
@@ -10,40 +9,9 @@ declare global {
 }
 
 /**
- * Posfra.js.
+ * Posfra.js
  * 
- * This SDK provides functionality to embedded payment buttons into any website.
- * 
- * @example
- * ```typescript
- * // Programmatic usage
- * const posfra = new Posfra('your-embed-token');
- * const button = posfra.createPayWithBitcoinButton(
- *   document.getElementById('payment-container'),
- *   {
- *     btc: '0.001',
- *     redirectURL: 'https://example.com/success',
- *     ref: 'unique-reference-id'
- *   }
- * );
- * 
- * // Listen to payment events
- * button.container?.addEventListener('onPaymentAccepted', (e) => {
- *   console.log('Payment accepted!', e.detail);
- * });
- * ```
- * 
- * @example
- * ```html
- * <!-- HTML declarative usage -->
- * <div 
- *   class="posfra-button"
- *   embed-token="your-embed-token"
- *   btc="0.002"
- *   redirect-url="https://example.com/success"
- *   ref="unique-reference-id"
- * ></div>
- * ```
+ * The official JavaScript SDK for Posfra.com.
  */
 class Posfra {
 
@@ -110,7 +78,7 @@ class Posfra {
      * Automatically creates a payment button from an HTML element with data attributes.
      * 
      * This static method is used internally for automatic initialization of buttons
-     * marked with the `posfra-button` class. It reads configuration from the element's
+     * marked with the `posfra-pay-button` class. It reads configuration from the element's
      * attributes and creates the button automatically.
      * 
      * **Required attributes:**
@@ -128,27 +96,7 @@ class Posfra {
      * 
      * @throws {Error} If the `embed-token` attribute is missing.
      * @throws {Error} If the `btc` or `usd` attribute is missing.
-     * 
-     * @example
-     * ```html
-     * <div 
-     *   class="posfra-button"
-     *   embed-token="your-embed-token"
-     *   btc="0.001"
-     *   redirect-url="https://example.com/success"
-     *   ref="order-12345"
-     *   data='{"orderId": "12345"}'
-     * ></div>
-     * ```
-     * 
-     * @example
-     * ```typescript
-     * // Manual initialization
-     * const element = document.querySelector('.posfra-button');
-     * if (element) {
-     *   Posfra.createPayWithBitcoinButtonFromElement(element);
-     * }
-     * ```
+     *
      */
     static createPayWithBitcoinButtonFromElement(element: Element): void {
         const embedToken = element.getAttribute('embed-token');
@@ -160,7 +108,8 @@ class Posfra {
 
 function __posfraInit() {
     window.Posfra = Posfra;
-    document.querySelectorAll('.posfra-button').forEach((element) => Posfra.createPayWithBitcoinButtonFromElement(element));
+    document.querySelectorAll('.posfra-pay-button')
+        .forEach((element) => Posfra.createPayWithBitcoinButtonFromElement(element));
 };
 
 if (document) {

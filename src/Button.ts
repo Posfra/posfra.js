@@ -2,16 +2,6 @@
 
 /**
  * Configuration options for creating a payment button.
- * 
- * @example
- * ```typescript
- * const options: ButtonOptions = {
- *   btc: '0.002',
- *   data: JSON.stringify({ orderId: '12345' })
- *   ref: 'order-12345',
- *   redirectURL: 'https://example.com/success',
- * };
- * ```
  */
 export type ButtonOptions = {
     /** Optional. Override the embed token (defaults to the instance token) */
@@ -86,8 +76,8 @@ export default class Button {
      * 
      * **Required attributes:**
      * - `embed-token`: Your Posfra embed token
-     * - `btc`: The payment amount in BTC (e.g., '0.001' for 0.001 BTC)
-     * - `usd`: The payment amount in USD (e.g., '50' for $50)
+     * - `btc` _OR_ `usd`: The payment amount in BTC (e.g., '0.001' for 0.001 BTC) _OR_ The payment amount in USD (e.g., '50' for $50)
+     * 
      * 
      * **Optional attributes:**
      * - `redirect-url`: URL to redirect after successful payment
@@ -101,24 +91,6 @@ export default class Button {
      * @throws {Error} If the `embed-token` attribute is missing.
      * @throws {Error} If the `btc` or `usd` attribute is missing.
      * 
-     * @example
-     * ```html
-     * <div 
-     *   class="posfra-button"
-     *   embed-token="your-embed-token"
-     *   usd="50"
-     *   redirect-url="https://example.com/success"
-     *   ref="order-12345"
-     *   data='{"orderId": "12345"}'
-     * ></div>
-     * ```
-     * 
-     * @example
-     * ```typescript
-     * const element = document.querySelector('.posfra-button');
-     * const options = Button.getOptionsFromElement(element);
-     * // Returns: { embedToken: '...', btc: '0.002', ... }
-     * ```
      */
     static getOptionsFromElement(element: Element): ButtonOptions {
 
@@ -185,21 +157,6 @@ export default class Button {
      * @param element - The DOM element where the button will be rendered. This element will
      *                  receive the button as a child and can be used to listen to payment events.
      * 
-     * @example
-     * ```typescript
-     * const button = new Button('your-embed-token', {
-     *   btc: '0.001',
-     *   redirectURL: 'https://example.com/success'
-     * });
-     * 
-     * const container = document.getElementById('payment-container');
-     * button.build(container);
-     * 
-     * // Listen to payment events
-     * container.addEventListener('onPaymentAccepted', (e) => {
-     *   console.log('Payment accepted!', e.detail);
-     * });
-     * ```
      */
     public build(element: Element) {
         this.container = element;
