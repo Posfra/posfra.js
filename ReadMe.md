@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ## Events
 
-You can listen for and respond to various events emitted throughout the paymnet lifecycle. These events allow you to track user interactions (such as opening or closing the payment window), get real-time updates to the payment status, and handle the outcome once a payment is accepted.
+You can listen for various events emitted throughout the payment lifecycle. These events allow you to track user interactions (such as opening or closing the payment window), get real-time updates to the payment status and handle the outcome once a payment is accepted.
 
 Below are all of events emitted by the payment button:
 
