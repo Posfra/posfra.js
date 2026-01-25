@@ -4,13 +4,13 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 esbuild.build({
-    entryPoints: ['src/Posfra.ts'],        // Your main TypeScript file
+    entryPoints: ['src/Posfra.ts'],        // Main TypeScript file
     bundle: true,                          // Bundle dependencies
     minify: true,                          // Minify output for CDN use
-    sourcemap: false,                      // Optional: useful for debugging
-    outfile: 'dist/embed.js',              // Output file
+    sourcemap: false,                      // Disable sourcemaps for production
+    outfile: 'dist/posfra.js',             // Output file
     format: 'iife',                        // IIFE format so it can be used in <script>
-    globalName: 'PosfraEmbed',             // Expose your code as `window.PosfraEmbed`
+    globalName: 'Posfra',                  // Expose code as `window.Posfra`
     target: ['es2017'],                    // Set target environment (adjust as needed)
     platform: 'browser',                   // Optimize for browser usage
     logLevel: 'info',                      // Log build info to console

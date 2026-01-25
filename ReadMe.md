@@ -6,7 +6,9 @@
 
 The Posfra.js SDK makes it quick and easy to integrate seamless Bitcoin payment experiences into your web applications. We provide ready-to-use, customizable UI components that securely handle the payment process. For full flexibility, you can also use our low-level JavaScript SDK to build fully custom payment flows tailored to your needs.
 
-### Documentation: [docs.posfra.com](https://docs.posfra.com)
+### Documentation: [Docs.Posfra.com](https://docs.posfra.com)
+### Learn More: [Posfra.com/Embedded-Payments](https://posfra.com/embedded-payments)
+### CDN: [CDN.Posfra.com/posfra.js](https://cdn.posfra.com/posfra.js)
 
 ```html
 <script src="https://cdn.posfra.com/posfra.js"></script>

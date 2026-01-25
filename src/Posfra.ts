@@ -1,6 +1,6 @@
 'use strict';
 
-import Button, { type ButtonOptions } from './Button';
+import { Button, type ButtonOptions } from './Button';
 
 declare global {
     interface Window {

@@ -25,7 +25,7 @@ export type ButtonOptions = {
  * It manages the payment overlay, status polling, and event dispatching.
  * 
  */
-export default class Button {
+export class Button {
 
     private embedToken: string = '';
 
@@ -65,7 +65,7 @@ export default class Button {
         this.usd = options.usd || null;
         this.data = options.data || null;
         this.redirectURL = options.redirectURL || null;
-        this.ref = options.ref || this.shortUUID();
+        this.ref = options.ref || Button.shortUUID();
     }
 
     /**
@@ -100,19 +100,24 @@ export default class Button {
 
         // BTC
         const btc = element.getAttribute('btc');
-        if (!btc) throw new Error('Missing btc attribute');
         if (!Number.isFinite(Number(btc))) throw new Error('Invalid btc attribute');
 
         // USD
         const usd = element.getAttribute('usd');
-        if (!usd) throw new Error('Missing usd attribute');
         if (!Number.isFinite(Number(usd))) throw new Error('Invalid usd attribute');
 
         if (btc && usd) throw new Error('Cannot use both btc and usd attributes');
         if (!btc && !usd) throw new Error('Missing btc or usd attribute');
 
         // Ref
-        const ref = element.getAttribute('ref') || undefined;
+        let ref = element.getAttribute('ref') || undefined;
+        if (ref) ref = ref.substring(0, 50);
+        if (!ref) {
+            // Generate a random reference if not provided
+            ref = Button.shortUUID();
+            element.setAttribute('ref', ref);
+        }
+
 
         // Redirect URL
         let redirectURL = undefined;
@@ -174,7 +179,7 @@ export default class Button {
             d?: string | null;   // data
         };
 
-        if (!this.ref) this.ref = this.shortUUID();
+        if (!this.ref) this.ref = Button.shortUUID();
 
         const data: ButtonData = {
             et: this.embedToken,
@@ -249,7 +254,7 @@ export default class Button {
         this.overlay = null;
     }
 
-    private shortUUID(): string {
+    private static shortUUID(): string {
         return 'xxxxxxxx'.replace(/[xy]/g, (char) => {
             const rand = Math.random() * 16 | 0;
             const value = char === 'x' ? rand : (rand & 0x3 | 0x8);
