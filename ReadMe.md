@@ -4,11 +4,10 @@
 
 # Posfra.js
 
-The Posfra.js SDK makes it quick and easy to integrate seamless Bitcoin payment experiences into your web applications. We provide ready-to-use, customizable UI components that securely handle the payment process. For full flexibility, you can also use our low-level JavaScript SDK to build fully custom payment flows tailored to your needs.
+The Posfra.js SDK makes it quick and easy to integrate seamless Bitcoin payment experiences into any web application. We provide ready-to-use, customizable UI components that securely handle the payment process. For full flexibility, you can also use our low-level JavaScript SDK to build fully custom payment flows tailored to your needs.
 
 ### Documentation: [Docs.Posfra.com](https://docs.posfra.com)
 ### Learn More: [Posfra.com/Embedded-Payments](https://posfra.com/embedded-payments)
-### CDN: [CDN.Posfra.com/posfra.js](https://cdn.posfra.com/posfra.js)
 
 ```html
 <script src="https://cdn.posfra.com/posfra.js"></script>
@@ -31,7 +30,7 @@ The Posfra.js SDK makes it quick and easy to integrate seamless Bitcoin payment 
 
 ## Advanced: JavaScript Initalization
 
-Beyond simple integration with the HTML UI components, Posfra.js empowers developers to create tailor-made Bitcoin payment experiences using its low-level JavaScript SDK. This SDK exposes all core payment operations, so you can craft fully customized user flows, interact with the payment backend directly, and adapt the widget's logic as needed for your application.
+Beyond simple integration with the HTML UI components, Posfra.js allows developers to create tailor-made Bitcoin payment experiences using its low-level JavaScript SDK. This SDK exposes all core payment operations, so you can craft fully customized user flows, interact with the payment backend directly, and adapt the widget's logic as needed for your application. Best of all, this can all be achieved client-side in-browser, with out the need for a back-end.
 
 
 ```js
@@ -50,14 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ## Events
 
-You can listen for various events emitted throughout the payment lifecycle. These events allow you to track user interactions (such as opening or closing the payment window), get real-time updates to the payment status and handle the outcome once a payment is accepted.
+You can listen for various events emitted throughout the payment lifecycle. These events allow you to track user interactions (such as opening or closing the payment window), get real-time updates to the payment status and handle the outcome once a payment is ["accepted"](https://docs.posfra.com/docs/platform/transactions#accepted).
 
 Below are all of events emitted by the payment button:
 
 - `onOpenPaymentWindow`: Triggered when a user clicks the button to open the payment popup.
 - `onClosePaymentWindow`: Triggered when the user closes the payment popup (either manually or after payment is complete).
 - `onUpdated`: Fired whenever the transaction status changes or new data is available (providing updated transaction details).
-- `onPaymentAccepted`: Fired when the payment is successfully accepted and confirmed, including transaction details (amount, ref, txid, etc.).
+- `onPaymentAccepted`: Called when the payment is _accepted_ and confirmed. Transaction details provided via `event.detail` (amount, ref, txid, [See API Docs: /transactions/ref/{ref}](https://docs.posfra.com/docs/openapispec)).
 
 To listen to these events, you can use `addEventListener` on your payment element, as shown below:
 ```js
@@ -88,4 +87,4 @@ element.addEventListener('onPaymentAccepted', (event) => {
 ```
 
 ## License
-MIT &copy; 2026 Posfra.com
+MIT &copy; 2026 [Posfra.com](https://posfra.com)
