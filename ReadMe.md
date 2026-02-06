@@ -16,7 +16,7 @@ The Posfra.js SDK makes it quick and easy to integrate seamless Bitcoin payment 
 <div 
   class="posfra-pay-button"
   embed-token="f419128f528d75174399b3662a2e0ceaed29b98a59cbc9d33601fa2f903c1b6f"
-  usd="50"
+  usd="30"
   redirect-url="https://yoursite.com/paid"
   ref="order-12345"
   data='{"customerId":"abc123"}'
